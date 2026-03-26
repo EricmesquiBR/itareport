@@ -10,18 +10,27 @@ const GlobalContext = createContext({
 })
 
 export const GlobalContextProvider = ({ children }) => {
-    const [userId, setUserId] = useState(
-        window.localStorage.getItem("userId") || ""
-    )
+    const [userId, setUserId] = useState("")
     const [markerData, setMarkerData] = useState(["", ""])
+    const [hydrated, setHydrated] = useState(false)
 
     useEffect(() => {
-        window.localStorage.setItem("userId", userId)
-    }, [userId])
+        const stored = localStorage.getItem("userId")
+        if (stored) {
+            setUserId(stored)
+        }
+        setHydrated(true)
+    }, [])
+
+    useEffect(() => {
+        if (hydrated) {
+            localStorage.setItem("userId", userId)
+        }
+    }, [userId, hydrated])
 
     const logout = () => {
         setUserId("")
-        window.localStorage.removeItem("userId")
+        localStorage.removeItem("userId")
     }
 
     return (

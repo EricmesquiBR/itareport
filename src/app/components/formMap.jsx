@@ -1,6 +1,7 @@
 "use client"
 
 import "leaflet/dist/leaflet.css"
+import L from "leaflet"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import { useGlobalContext } from "../context/store"
 import { React, useEffect, useState } from "react"
@@ -14,12 +15,6 @@ export default function ReportFormMap() {
         popupAnchor: [17, -48]
     })
 
-    useEffect(() => {
-        if (markerData) {
-            console.log(markerData)
-        }
-    }, [markerData])
-
     return (
         <MapContainer
             center={[-3.9, -39.5]}
@@ -29,9 +24,6 @@ export default function ReportFormMap() {
             whenReady={(mapInstance) => {
                 mapInstance.target.on("click", function (e) {
                     const { lat, lng } = e.latlng
-
-                    // Save the new marker position in state
-
                     setMarkerData([lat, lng])
                 })
             }}

@@ -2,11 +2,19 @@
 
 import { React, use, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import dynamic from "next/dynamic"
 import Header from "../components/header"
 import Footer from "../components/footer"
-import ReportFormMap from "../components/formMap"
+import Loading from "../components/loading"
 import { useGlobalContext } from "../context/store"
 import axios from "axios"
+
+const ReportFormMap = dynamic(() => import("../components/formMap"), {
+    loading: () => <Loading />,
+    ssr: false
+})
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030"
 
 export default function Forms() {
     const [title, setTitle] = useState("")
@@ -20,7 +28,7 @@ export default function Forms() {
     const router = useRouter()
 
     useEffect(() => {
-        axios.get("http://localhost:3030/category").then((response) => {
+        axios.get(`${API_URL}/category`).then((response) => {
             setCategories(response.data.data)
         })
     }, [])
@@ -50,7 +58,7 @@ export default function Forms() {
         }
 
         axios
-            .post("http://localhost:3030/report", {
+            .post(`${API_URL}/report`, {
                 title,
                 content,
                 id: userId,
@@ -58,8 +66,8 @@ export default function Forms() {
                 street,
                 district,
                 city,
-                lat: markerData[1],
-                lng: markerData[0]
+                lat: markerData[0],
+                lng: markerData[1]
             })
             .then((response) => {
                 console.log(response.data)

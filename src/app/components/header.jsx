@@ -1,9 +1,8 @@
 "use client"
 
-import { use, useEffect } from "react"
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useGlobalContext } from "../context/store"
-import { verify } from "crypto"
 
 function Header() {
     const { userId, logout } = useGlobalContext()

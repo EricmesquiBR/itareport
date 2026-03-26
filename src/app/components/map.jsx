@@ -1,50 +1,40 @@
 "use client"
 
 import "leaflet/dist/leaflet.css"
+import L from "leaflet"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import { React, useEffect, useState } from "react"
 import axios from "axios"
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030"
 
 export default function Map() {
     const [markersData, setMarkersData] = useState([])
     const [idCat, setIdCat] = useState("")
     const [categories, setCategories] = useState([])
 
-    // useEffect(() => {
-    //     axios
-    //         .get("http://localhost:3030/reports")
-    //         .then((response) => setMarkersData(response.data.data))
-    //         .catch((error) => {
-    //             console.error("Error:", error)
-    //             setError("An error occurred while loading the markers.")
-    //         })
-    // }, [])
-
     useEffect(() => {
-        axios.get("http://localhost:3030/category").then((response) => {
+        axios.get(`${API_URL}/category`).then((response) => {
             setCategories(response.data.data)
         })
     }, [])
 
-    //filtro para as denuncias, conforme a categoria
     useEffect(() => {
         if (idCat === "") {
             axios
-                .get("http://localhost:3030/reports")
+                .get(`${API_URL}/reports`)
                 .then((response) => setMarkersData(response.data.data))
                 .catch((error) => {
                     console.error("Error:", error)
-                    setError("An error occurred while loading the markers.")
                 })
         } else {
             axios
-                .get(`http://localhost:3030/category/${idCat}`)
+                .get(`${API_URL}/category/${idCat}`)
                 .then((response) => {
                     setMarkersData(response.data.data)
                 })
                 .catch((error) => {
                     console.error("Error:", error)
-                    setError("An error occurred while loading the markers.")
                 })
         }
     }, [idCat])
@@ -55,8 +45,6 @@ export default function Map() {
         iconAnchor: [17, 20],
         popupAnchor: [17, -48]
     })
-
-    console.log(markersData)
 
     return (
         <>
@@ -106,7 +94,7 @@ export default function Map() {
                             .map((report) => (
                                 <Marker
                                     key={report.id_report}
-                                    position={[report.lng, report.lat]}
+                                    position={[report.lat, report.lng]}
                                     icon={pin}
                                 >
                                     <Popup>

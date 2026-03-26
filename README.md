@@ -1,94 +1,84 @@
-# :checkered_flag: ITAREPORT
+# Itareport
 
-Nosso projeto possibilita que o usuário possa fazer reports/denúncias, com o intuito de aprimorar socialmente e como comunidade á cidade de Itapajé, relatando um problema estruturaal, acidente de carro, falta acessibilidade ou prejudição ao meio ambiente, por exemplo.
+A community-driven platform where citizens can report urban issues such as structural problems, car accidents, lack of accessibility, or environmental damage — helping improve the city of Itapaje collectively.
 
-## :technologist: Membros da equipe e Orientador
+## About
 
-- 538897 - Antonio Lucas Melo de Sousa.
-- 539355 - José Eric Mesquita Coelho.
-- 540910 - Matheus Feitosa de Oliveira Rabelo.
-- XXXXXX - Anderson Gonçalves Uchôa.
+Itareport allows users to browse and create reports (denuncias) pinned to an interactive map. Reports are categorized and geolocated, giving the community a clear view of ongoing issues across the city.
 
-## :people_holding_hands: Papéis ou tipos de usuário da aplicação
+### User Roles
 
-> Usuário Padrão Não Logado: Ele poderá acessar o site normalmente, podendo visualizar o mapa de denúncias, mas não terá a possibilidade de fazer as permissões de um usuário logado.
+- **Guest (not logged in):** Can browse the map and view existing reports.
+- **Authenticated user:** Can create reports, confirm existing ones, and manage their account.
 
-> Usuário Padrão Logado: Ele poderá acessar o site normalmente, podendo visualizar o mapa de denúncias, confirmar uma denúncia, criar uma deúncia de forma anônima, fazer um cadastro e logar na sua conta. Ele não poderá criar uma categoria, ou alterar alguma configuração do sistema.
+### Features
 
-## :spiral_calendar: Entidades ou tabelas do sistema
+- Interactive map powered by Leaflet to visualize reports
+- Report creation with geolocation, category, and description
+- User registration and authentication
+- Filter and browse reports by category
 
-Liste as principais entidades do sistema.
-- Usuario
-- Denuncia
-- Categoria
+## Tech Stack
 
-## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
+- [Next.js](https://nextjs.org/) 13 (App Router)
+- [React](https://react.dev/) 18
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Leaflet](https://react-leaflet.js.org/) for map rendering
+- [Axios](https://axios-http.com/) for HTTP requests
+- TypeScript
 
-Descreve ou liste brevemente as principais funcionalidades da aplicação que será desenvolvida. Destaque a funcionalidades que serão acessévies a todos os usuários e aquelas restriras a usuários logados.
+## Prerequisites
 
-> Usuários em geral:
-- Cadastrar
-- Logar
-- Visualizar denúncias
-- Filtrar denúncia
+- [Node.js](https://nodejs.org/) >= 16
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- A running instance of the [itareport-api](../itareport-api) backend
 
-> Usuários Logados:
-- Criar uma denúncia
-- Recuperar senha
+## Getting Started
 
+1. **Clone the repository**
 
-----
+   ```bash
+   git clone https://github.com/<your-org>/itareport.git
+   cd itareport
+   ```
 
+2. **Install dependencies**
 
-## :desktop_computer: Tecnologias e frameworks utilizados
+   ```bash
+   npm install
+   ```
 
-**Frontend:**
+3. **Run the development server**
 
-Lista as tecnologias, frameworks e bibliotecas utilizados.
-- React
-- Tailwindcss
-- Next.js
-- React leaflet
+   ```bash
+   npm run dev
+   ```
 
-**Backend:**
+   The app will be available at [http://localhost:3000](http://localhost:3000).
 
-Lista as tecnologias, frameworks e bibliotecas utilizados.
-- Prisma
-- Nodemon
-- Vercel Postgres
-- Node.js
+4. **Build for production**
 
+   ```bash
+   npm run build
+   ```
 
-## :shipit: Operações implementadas para cada entidade da aplicação
+## Project Structure
 
+```
+src/
+  app/          # Next.js App Router pages and layouts
+public/         # Static assets
+docs/           # Project documentation
+```
 
-| Entidade| Criação | Leitura | Atualização | Remoção |
-| --- | --- | --- | --- | --- |
-| Usuario | X |  X  | X | X |
-| Denuncia | X |  X |  X | X |
-| Categoria | X | X |  |  |
+## Related
 
-> Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
+- [itareport-api](../itareport-api) — Backend REST API for this project
 
-## :neckbeard: Rotas da API REST utilizadas
+## Contributing
 
-| Método HTTP | URL |
-| --- | --- |
-| GET | /users | 
-| GET | /user/{id_user} |
-| GET | /reports |
-| GET | /report/{id_report} |
-| GET | /category |
-| GET | /category/{id_category} |
-| POST | /user |
-| POST | /report |
-| POST | /category/{id_user} |
-| PUT | /user/{id_user} |
-| PUT | /report/{id_report} |
-| DEL | /user/{id_user} |
-| DEL | /report/{id_report} |
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
-## Documentação
-* [Documento de visão do projeto](https://github.com/anderson-uchoa/github-template-projeto-integrador/blob/main/docs/documento_visao.docx)
-* [Regras gerais da disciplina](https://github.com/anderson-uchoa/github-template-projeto-integrador/blob/main/docs/regras_gerais.pdf)
-* [Apresentação do Projeto](https://youtu.be/-6jF9T1i58k)
+## License
+
+This project is licensed under the [MIT License](LICENSE).

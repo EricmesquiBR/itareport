@@ -7,6 +7,8 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import axios from "axios"
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030"
+
 export default function Register() {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
@@ -44,7 +46,7 @@ export default function Register() {
         const hashedPassword = hashPassword(password)
 
         axios
-            .post("http://localhost:3030/user", {
+            .post(`${API_URL}/user`, {
                 name,
                 cpf,
                 email,
@@ -152,10 +154,10 @@ export default function Register() {
                         </div>
                         <div className='mt-3'>
                             <label
-                                htmlFor='password'
+                                htmlFor='surPassword'
                                 className='block text-base mb-2'
                             >
-                                Senha
+                                Confirmar Senha
                             </label>
                             <input
                                 type='password'
