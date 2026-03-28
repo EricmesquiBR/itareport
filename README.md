@@ -61,6 +61,15 @@ Itareport allows users to browse and create reports (denuncias) pinned to an int
    bun run build
    ```
 
+5. **Lint and format with Oxc (Oxlint + Oxfmt)**
+
+   ```bash
+   bun run lint:ox
+   bun run lint:ox:fix
+   bun run format:ox
+   bun run format:ox:fix
+   ```
+
 ## Project Structure
 
 ```
