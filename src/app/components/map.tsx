@@ -3,18 +3,31 @@
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import { React, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030"
 
+type Category = {
+    id_categoria: number
+    nome_categoria: string
+}
+
+type Report = {
+    id_report: number
+    title: string
+    content: string
+    lat?: number
+    lng?: number
+}
+
 export default function Map() {
-    const [markersData, setMarkersData] = useState([])
+    const [markersData, setMarkersData] = useState<Report[] | null>([])
     const [idCat, setIdCat] = useState("")
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState<Category[]>([])
 
     useEffect(() => {
-        axios.get(`${API_URL}/category`).then((response) => {
+        axios.get<{ data: Category[] }>(`${API_URL}/category`).then((response) => {
             setCategories(response.data.data)
         })
     }, [])
@@ -24,8 +37,9 @@ export default function Map() {
             axios
                 .get(`${API_URL}/reports`)
                 .then((response) => setMarkersData(response.data.data))
-                .catch((error) => {
+                .catch((error: unknown) => {
                     console.error("Error:", error)
+                    setMarkersData(null)
                 })
         } else {
             axios
@@ -33,8 +47,9 @@ export default function Map() {
                 .then((response) => {
                     setMarkersData(response.data.data)
                 })
-                .catch((error) => {
+                .catch((error: unknown) => {
                     console.error("Error:", error)
+                    setMarkersData(null)
                 })
         }
     }, [idCat])
@@ -88,13 +103,13 @@ export default function Map() {
                         {markersData
                             .filter(
                                 (report) =>
-                                    report.lat !== undefined &&
-                                    report.lng !== undefined
+                                    typeof report.lat === "number" &&
+                                    typeof report.lng === "number"
                             )
                             .map((report) => (
                                 <Marker
                                     key={report.id_report}
-                                    position={[report.lat, report.lng]}
+                                    position={[report.lat as number, report.lng as number]}
                                     icon={pin}
                                 >
                                     <Popup>

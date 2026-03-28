@@ -1,6 +1,6 @@
 "use client"
 
-import { React, useState } from "react"
+import { useState, type FormEvent } from "react"
 import { SHA256 } from "crypto-js"
 
 import Header from "../components/header"
@@ -16,21 +16,21 @@ export default function Register() {
     const [password, setPassword] = useState("")
     const [surPassword, setSurPassword] = useState("")
 
-    const validateEmail = (email) => {
+    const validateEmail = (emailValue: string) => {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-        return regex.test(email)
+        return regex.test(emailValue)
     }
 
-    const validatePassword = (password, surpassword) => {
-        return password === surpassword
+    const validatePassword = (passwordValue: string, surPasswordValue: string) => {
+        return passwordValue === surPasswordValue
     }
 
-    const hashPassword = (password) => {
-        return SHA256(password).toString()
+    const hashPassword = (passwordValue: string) => {
+        return SHA256(passwordValue).toString()
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         if (!validateEmail(email)) {
@@ -62,7 +62,7 @@ export default function Register() {
 
                 alert("Usuário cadastrado com sucesso")
             })
-            .catch((error) => {
+            .catch((error: unknown) => {
                 console.log(error)
                 alert("Erro ao cadastrar usuário")
             })

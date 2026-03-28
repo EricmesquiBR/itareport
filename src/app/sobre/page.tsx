@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import Image from "next/image"
 import Header from "../components/header"
 import Footer from "../components/footer"
@@ -32,6 +31,7 @@ function Sobre() {
                             src={eric}
                             height={400}
                             width={400}
+                            alt='Foto de Eric'
                         />
                     </div>
                     <div className='card-body text-center'>
@@ -45,13 +45,15 @@ function Sobre() {
                         <div className='flex items-stretch'>
                             <Image
                                 src={linkedin}
-                                width='30'
-                                height='30'
+                                width={30}
+                                height={30}
                                 className='icon pb-2'
+                                alt='LinkedIn'
                             />
                             <a
                                 href='https://www.linkedin.com/in/eric-mesquita-3826a7180/'
                                 target='_blank'
+                                rel='noreferrer'
                                 className='link text-center ps-2'
                             >
                                 linkedin.com/in/eric-mesquita
@@ -60,13 +62,15 @@ function Sobre() {
                         <div className='flex items-stretch'>
                             <Image
                                 src={github}
-                                width='30'
-                                height='30'
+                                width={30}
+                                height={30}
                                 className='icon pb-2'
+                                alt='GitHub'
                             />
                             <a
                                 href='https://github.com/EricmesquiBR'
                                 target='_blank'
+                                rel='noreferrer'
                                 className='link text-center ps-2'
                             >
                                 https://github.com/EricmesquiBR
@@ -81,6 +85,7 @@ function Sobre() {
                             src={lucas}
                             height={400}
                             width={400}
+                            alt='Foto de Lucas'
                         />
                     </div>
                     <div className='card-body text-center'>
@@ -92,13 +97,15 @@ function Sobre() {
                         <div className='flex items-stretch'>
                             <Image
                                 src={linkedin}
-                                width='30'
-                                height='30'
+                                width={30}
+                                height={30}
                                 className='icon pb-2'
+                                alt='LinkedIn'
                             />
                             <a
                                 href='https://www.linkedin.com/in/lucas-sousa-689b6a236/'
                                 target='_blank'
+                                rel='noreferrer'
                                 className='link text-center ps-2'
                             >
                                 linkedin.com/in/lucas-sousa
@@ -107,13 +114,15 @@ function Sobre() {
                         <div className='flex items-stretch'>
                             <Image
                                 src={github}
-                                width='30'
-                                height='30'
+                                width={30}
+                                height={30}
                                 className='icon pb-2'
+                                alt='GitHub'
                             />
                             <a
                                 href='https://github.com/1M0RR1V3L'
                                 target='_blank'
+                                rel='noreferrer'
                                 className='link text-center ps-2'
                             >
                                 https://github.com/1M0RR1V3L
@@ -128,6 +137,7 @@ function Sobre() {
                             src={matheus}
                             height={400}
                             width={400}
+                            alt='Foto de Matheus'
                         />
                     </div>
                     <div className='card-body text-center'>
@@ -140,13 +150,15 @@ function Sobre() {
                         <div className='flex items-stretch'>
                             <Image
                                 src={linkedin}
-                                width='30'
-                                height='30'
+                                width={30}
+                                height={30}
                                 className='icon pb-2'
+                                alt='LinkedIn'
                             />
                             <a
                                 href='https://www.linkedin.com/in/matheus-feitosa-de-oliveira-rabelo/'
                                 target='_blank'
+                                rel='noreferrer'
                                 className='link text-center ps-2'
                             >
                                 linkedin.com/in/matheus-feitosa
@@ -155,13 +167,15 @@ function Sobre() {
                         <div className='flex items-stretch'>
                             <Image
                                 src={github}
-                                width='30'
-                                height='30'
+                                width={30}
+                                height={30}
                                 className='icon pb-2'
+                                alt='GitHub'
                             />
                             <a
                                 href='https://github.com/Theus1990'
                                 target='_blank'
+                                rel='noreferrer'
                                 className='link text-center ps-2'
                             >
                                 https://github.com/Theus1990

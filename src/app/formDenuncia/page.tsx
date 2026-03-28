@@ -1,6 +1,6 @@
 "use client"
 
-import { React, use, useEffect, useState } from "react"
+import { useEffect, useState, type FormEvent } from "react"
 import { useRouter } from "next/navigation"
 import dynamic from "next/dynamic"
 import Header from "../components/header"
@@ -16,6 +16,11 @@ const ReportFormMap = dynamic(() => import("../components/formMap"), {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030"
 
+type Category = {
+    id_categoria: number
+    nome_categoria: string
+}
+
 export default function Forms() {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
@@ -23,12 +28,12 @@ export default function Forms() {
     const [street, setStreet] = useState("")
     const [district, setDistrict] = useState("")
     const [city, setCity] = useState("")
-    const { markerData, setMarkerData, userId } = useGlobalContext()
-    const [categories, setCategories] = useState([])
+    const { markerData, userId } = useGlobalContext()
+    const [categories, setCategories] = useState<Category[]>([])
     const router = useRouter()
 
     useEffect(() => {
-        axios.get(`${API_URL}/category`).then((response) => {
+        axios.get<{ data: Category[] }>(`${API_URL}/category`).then((response) => {
             setCategories(response.data.data)
         })
     }, [])
@@ -37,10 +42,10 @@ export default function Forms() {
         console.log(idCat)
     }, [idCat])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if (markerData[0] === "" || markerData[1] === "") {
+        if (typeof markerData[0] !== "number" || typeof markerData[1] !== "number") {
             alert("Selecione um local no mapa")
             return
         }
@@ -80,7 +85,7 @@ export default function Forms() {
                     router.push("/mapa")
                 }
             })
-            .catch((error) => {
+            .catch((error: unknown) => {
                 console.log(error)
                 alert("Erro ao cadastrar denúncia")
             })

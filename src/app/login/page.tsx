@@ -1,6 +1,6 @@
 "use client"
 
-import { React, useState } from "react"
+import { useState, type FormEvent } from "react"
 import { useRouter } from "next/navigation"
 import axios from "axios"
 import Header from "../components/header"
@@ -13,14 +13,14 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030"
 export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const { userId, setUserId } = useGlobalContext("")
+    const { setUserId } = useGlobalContext()
     const router = useRouter()
 
-    const hashPassword = (password) => {
-        return SHA256(password).toString()
+    const hashPassword = (passwordValue: string) => {
+        return SHA256(passwordValue).toString()
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const hashedPassword = hashPassword(password)
@@ -45,7 +45,7 @@ export default function Login() {
                 alert(response.data.message)
                 router.push("/")
             })
-            .catch((error) => {
+            .catch((error: unknown) => {
                 console.log(error)
                 alert("Erro ao fazer login")
             })

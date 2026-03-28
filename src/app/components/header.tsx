@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { type MouseEvent } from "react"
 import { useRouter } from "next/navigation"
 import { useGlobalContext } from "../context/store"
 
@@ -8,7 +8,7 @@ function Header() {
     const { userId, logout } = useGlobalContext()
     const router = useRouter()
 
-    const handleLogout = (event) => {
+    const handleLogout = (event: MouseEvent<HTMLAnchorElement>) => {
         event.preventDefault()
         logout()
         router.push("/")
