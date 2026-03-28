@@ -47,7 +47,7 @@ export default function Login() {
       })
       .catch((error: unknown) => {
         console.log(error);
-        alert("Erro ao fazer login");
+        alert("Error while logging in");
       });
 
     setEmail("");
@@ -69,20 +69,20 @@ export default function Login() {
               type="text"
               id="email"
               className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-              placeholder="Digite seu email..."
+              placeholder="Enter your email..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mt-3">
             <label htmlFor="password" className="block text-base mb-2">
-              Senha
+              Password
             </label>
             <input
               type="password"
               id="password"
               className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-              placeholder="Digite sua senha..."
+              placeholder="Enter your password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -90,11 +90,11 @@ export default function Login() {
           <div className="mt-3 flex justify-between items-center">
             <div>
               <input type="checkbox" />
-              <label className="ps-1">Lembre de Mim</label>
+              <label className="ps-1">Remember me</label>
             </div>
             <div>
               <a href="#" className="text-gray-900 font-semibold">
-                Esqueci Minha Senha
+                Forgot my password
               </a>
             </div>
           </div>

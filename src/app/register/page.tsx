@@ -34,12 +34,12 @@ export default function Register() {
     e.preventDefault();
 
     if (!validateEmail(email)) {
-      alert("E-mail inválido");
+      alert("Invalid email");
       return;
     }
 
     if (!validatePassword(password, surPassword)) {
-      alert("Senhas não conferem");
+      alert("Passwords do not match");
       return;
     }
 
@@ -60,14 +60,14 @@ export default function Register() {
           return;
         }
 
-        alert("Usuário cadastrado com sucesso");
+        alert("User registered successfully");
       })
       .catch((error: unknown) => {
         console.log(error);
-        alert("Erro ao cadastrar usuário");
+        alert("Error while registering user");
       });
 
-    // Limpa os campos
+    // Clear form fields.
     setName("");
     setEmail("");
     setCPF("");
@@ -81,17 +81,17 @@ export default function Register() {
         <Header />
         <form className="flex justify-center items-center pt-36 pb-36" onSubmit={handleSubmit}>
           <div className="htmlForm-register grid grid-cols-2 gap-3 p-6 shadow-lg bg-slate-50 rounded-md">
-            <h1 className="text-3xl block text-center font-semibold col-span-2">Cadastro</h1>
+            <h1 className="text-3xl block text-center font-semibold col-span-2">Sign Up</h1>
             <hr className="mt-3 col-span-2" />
             <div className="mt-3 col-span-2">
               <label htmlFor="name" className="block text-base mb-2 ">
-                Nome completo
+                Full name
               </label>
               <input
                 type="text"
                 id="name"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Digite seu nome..."
+                placeholder="Enter your full name..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -104,46 +104,46 @@ export default function Register() {
                 type="text"
                 id="email"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Digite seu e-Mail..."
+                placeholder="Enter your email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mt-3">
               <label htmlFor="cpf" className="block text-base mb-2">
-                CPF
+                National ID (CPF)
               </label>
               <input
                 type="text"
                 id="cpf"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Digite seu CPF..."
+                placeholder="Enter your CPF..."
                 value={cpf}
                 onChange={(e) => setCPF(e.target.value)}
               />
             </div>
             <div className="mt-3">
               <label htmlFor="password" className="block text-base mb-2">
-                Senha
+                Password
               </label>
               <input
                 type="password"
                 id="password"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Digite sua senha..."
+                placeholder="Enter your password..."
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="mt-3">
               <label htmlFor="surPassword" className="block text-base mb-2">
-                Confirmar Senha
+                Confirm password
               </label>
               <input
                 type="password"
                 id="surPassword"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Digite sua senha..."
+                placeholder="Confirm your password..."
                 value={surPassword}
                 onChange={(e) => setSurPassword(e.target.value)}
               />
@@ -152,7 +152,7 @@ export default function Register() {
               <div>
                 <input type="checkbox" />
                 <label className="ps-1">
-                  Concordo com os termos e condições de uso do site e sua política de privacidade.
+                  I agree to the website terms of use and privacy policy.
                 </label>
               </div>
             </div>
@@ -161,7 +161,7 @@ export default function Register() {
                 type="submit"
                 className="border-2 border-gray-900 bg-gray-900 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-gray-900 font-semibold"
               >
-                Cadastrar-se
+                Create account
               </button>
             </div>
           </div>

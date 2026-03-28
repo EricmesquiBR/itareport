@@ -26,22 +26,22 @@ function Header() {
               Login
             </a>
             <a
-              href="/cadastrar"
+              href="/register"
               className="text-white rounded-md border border-slate-100 p-2 hover:bg-slate-100 hover:text-gray-900 transition duration-100 ease-in-out"
             >
-              Cadastrar
+              Sign Up
             </a>
           </>
         ) : (
           <>
             <a
-              href="/formDenuncia/"
+              href="/report-form/"
               className="text-white rounded-md border border-slate-100 p-2 hover:bg-slate-100 hover:text-gray-900 transition duration-100 ease-in-out"
             >
-              Fazer Denúncia
+              Report Issue
             </a>
             <a href="/" className="text-white" onClick={handleLogout}>
-              Sair
+              Sign Out
             </a>
           </>
         )}

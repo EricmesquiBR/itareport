@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
-    "lint": "vinext lint",
+    "lint": "oxlint -c .oxlintrc.json --disable-unicorn-plugin .",
     "lint:ox": "oxlint -c .oxlintrc.json --disable-unicorn-plugin .",
     "lint:ox:fix": "oxlint -c .oxlintrc.json --disable-unicorn-plugin --fix .",
     "format:ox": "oxfmt -c .oxfmtrc.json --ignore-path .oxfmtignore --check .",
@@ -19,7 +19,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "crypto-js": "^4.1.1",
-    "eslint": "8.41.0",
     "leaflet": "^1.9.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

@@ -3,22 +3,22 @@
 import Image from "next/image";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import lucas from "../../../public/sobre/lucas.jpeg";
-import matheus from "../../../public/sobre/matheus.png";
-import eric from "../../../public/sobre/eric.jpeg";
-import github from "../../../public/sobre/github.svg";
-import linkedin from "../../../public/sobre/linkedin.svg";
+import lucas from "../../../public/about/lucas.jpeg";
+import matheus from "../../../public/about/matheus.png";
+import eric from "../../../public/about/eric.jpeg";
+import github from "../../../public/about/github.svg";
+import linkedin from "../../../public/about/linkedin.svg";
 
-function Sobre() {
+function About() {
   return (
     <>
       <Header />
 
       <div className="title">
-        <h1 className="text-3xl text-center">Quem somos?</h1>
+        <h1 className="text-3xl text-center">Who are we?</h1>
         <p className="text-center">
-          Somos estudantes da UFC campus Jardins de Anita em Itapagé. Atualmente estamos no 3º
-          semestre e desenvolvemos esse site com o intuito de ajudar a populacão de itapajé.
+          We are students from UFC at the Jardins de Anita campus in Itapaje. We are currently in
+          our third semester and built this platform to help the local community.
         </p>
       </div>
 
@@ -35,8 +35,8 @@ function Sobre() {
           </div>
           <div className="card-body text-center">
             <h5 className="card-title text-2xl text-center">Eric</h5>
-            <p className="card-text">Desenvolvedor.</p>
-            <p className="card-text">Responsável por desenvolver e programar o Front-end.</p>
+            <p className="card-text">Developer.</p>
+            <p className="card-text">Responsible for building and programming the frontend.</p>
             <div className="flex items-stretch">
               <Image src={linkedin} width={30} height={30} className="icon pb-2" alt="LinkedIn" />
               <a
@@ -73,8 +73,8 @@ function Sobre() {
           </div>
           <div className="card-body text-center">
             <h5 className="card-title text-2xl">Lucas</h5>
-            <p className="card-text">Desenvolvedor.</p>
-            <p className="card-text">Responsável por desenvolver e programar o Back-End.</p>
+            <p className="card-text">Developer.</p>
+            <p className="card-text">Responsible for building and programming the backend.</p>
             <div className="flex items-stretch">
               <Image src={linkedin} width={30} height={30} className="icon pb-2" alt="LinkedIn" />
               <a
@@ -111,8 +111,8 @@ function Sobre() {
           </div>
           <div className="card-body text-center">
             <h5 className="card-title text-2xl">Matheus</h5>
-            <p className="card-text">Desenvolvedor e BDA.</p>
-            <p className="card-text">Responsável pela modelagem, criação e manipulação do BD.</p>
+            <p className="card-text">Developer and DBA.</p>
+            <p className="card-text">Responsible for database design, creation, and maintenance.</p>
             <div className="flex items-stretch">
               <Image src={linkedin} width={30} height={30} className="icon pb-2" alt="LinkedIn" />
               <a
@@ -144,4 +144,4 @@ function Sobre() {
   );
 }
 
-export default Sobre;
+export default About;

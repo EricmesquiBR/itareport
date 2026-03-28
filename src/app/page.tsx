@@ -20,10 +20,10 @@ export default function LandingPage() {
       <div className="landingpage">
         <div className="text-center text-2xl">
           <div className="Desc">
-            <h2 className="text-4xl pt-10 font-bold">Faça uma denúncia, faça a diferença!</h2>{" "}
+            <h2 className="text-4xl pt-10 font-bold">Report an issue, make a difference!</h2>{" "}
             <br />
             <p className="pb-10">
-              Colabore com outros cidadãos e ajude a tornar nossa cidade um lugar melhor!
+              Collaborate with other citizens and help make our city a better place.
             </p>
           </div>
           <div className="CTA">
@@ -33,7 +33,7 @@ export default function LandingPage() {
                 asChild
                 className="cta-bottom absolute rounded border-2 border-black bg-gray-500 text-gray-200 hover:bg-gray-600"
               >
-                <a href="/mapa/">Ver Mapa de Denúncias</a>
+                <a href="/map/">View Issue Map</a>
               </Button>
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function LandingPage() {
               alt="..."
             />
             <div className="card-body text-center">
-              <h5 className="card-title text-center text-3xl">1º Passo</h5>
+              <h5 className="card-title text-center text-3xl">Step 1</h5>
               <p className="card-text text-2xl">
                 This is a wider card with supporting text below as a natural lead-in to additional
                 content. This content is a little bit longer.
@@ -60,7 +60,7 @@ export default function LandingPage() {
               alt="..."
             />
             <div className="card-body text-center">
-              <h5 className="card-title text-center text-3xl">2º Passo</h5>
+              <h5 className="card-title text-center text-3xl">Step 2</h5>
               <p className="card-text text-2xl">
                 This card has supporting text below as a natural lead-in to additional content.
               </p>
@@ -73,7 +73,7 @@ export default function LandingPage() {
               alt="..."
             />
             <div className="card-body text-center">
-              <h5 className="card-title text-center text-3xl">3º Passo</h5>
+              <h5 className="card-title text-center text-3xl">Step 3</h5>
               <p className="card-text text-2xl">
                 This is a wider card with supporting text below as a natural lead-in to additional
                 content. This card has even longer content than the first to show that equal height

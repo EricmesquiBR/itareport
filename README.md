@@ -4,7 +4,7 @@ A community-driven platform where citizens can report urban issues such as struc
 
 ## About
 
-Itareport allows users to browse and create reports (denuncias) pinned to an interactive map. Reports are categorized and geolocated, giving the community a clear view of ongoing issues across the city.
+Itareport allows users to browse and create issue reports pinned to an interactive map. Reports are categorized and geolocated, giving the community a clear view of ongoing issues across the city.
 
 ### User Roles
 

@@ -8,9 +8,14 @@ import axios from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030";
 
-type Category = {
+type CategoryApi = {
   id_categoria: number;
   nome_categoria: string;
+};
+
+type Category = {
+  id: number;
+  name: string;
 };
 
 type Report = {
@@ -27,8 +32,13 @@ export default function Map() {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    axios.get<{ data: Category[] }>(`${API_URL}/category`).then((response) => {
-      setCategories(response.data.data);
+    axios.get<{ data: CategoryApi[] }>(`${API_URL}/category`).then((response) => {
+      setCategories(
+        response.data.data.map((category) => ({
+          id: category.id_categoria,
+          name: category.nome_categoria,
+        }))
+      );
     });
   }, []);
 
@@ -65,7 +75,7 @@ export default function Map() {
     <>
       <div className="flex">
         <label htmlFor="category" className="px-1">
-          Filtro:
+          Filter:
         </label>
         <select
           id="category"
@@ -73,10 +83,10 @@ export default function Map() {
           value={idCat}
           onChange={(e) => setIdCat(e.target.value)}
         >
-          <option value="">Todas as categorias</option>
+          <option value="">All categories</option>
           {categories.map((category) => (
-            <option key={category.id_categoria} value={category.id_categoria}>
-              {category.nome_categoria}
+            <option key={category.id} value={category.id}>
+              {category.name}
             </option>
           ))}
         </select>
@@ -84,7 +94,7 @@ export default function Map() {
       <div>
         {!markersData ? (
           <div className="loading flex items-center justify-center z-50">
-            Erro: Recarregue a página
+            Error: Reload the page
           </div>
         ) : (
           <MapContainer center={[-3.9, -39.5]} zoom={10} scrollWheelZoom={true} minZoom={3}>

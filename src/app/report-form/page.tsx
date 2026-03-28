@@ -9,16 +9,21 @@ import Loading from "../components/loading";
 import { useGlobalContext } from "../context/store";
 import axios from "axios";
 
-const ReportFormMap = dynamic(() => import("../components/formMap"), {
+const ReportFormMap = dynamic(() => import("../components/reportFormMap"), {
   loading: () => <Loading />,
   ssr: false,
 });
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030";
 
-type Category = {
+type CategoryApi = {
   id_categoria: number;
   nome_categoria: string;
+};
+
+type Category = {
+  id: number;
+  name: string;
 };
 
 export default function Forms() {
@@ -33,8 +38,13 @@ export default function Forms() {
   const router = useRouter();
 
   useEffect(() => {
-    axios.get<{ data: Category[] }>(`${API_URL}/category`).then((response) => {
-      setCategories(response.data.data);
+    axios.get<{ data: CategoryApi[] }>(`${API_URL}/category`).then((response) => {
+      setCategories(
+        response.data.data.map((category) => ({
+          id: category.id_categoria,
+          name: category.nome_categoria,
+        }))
+      );
     });
   }, []);
 
@@ -46,7 +56,7 @@ export default function Forms() {
     e.preventDefault();
 
     if (typeof markerData[0] !== "number" || typeof markerData[1] !== "number") {
-      alert("Selecione um local no mapa");
+      alert("Select a location on the map");
       return;
     }
 
@@ -58,7 +68,7 @@ export default function Forms() {
       idCat === "" ||
       city === ""
     ) {
-      alert("Preencha todos os campos");
+      alert("Fill in all fields");
       return;
     }
 
@@ -82,12 +92,12 @@ export default function Forms() {
           if (response.data.error) {
             return;
           }
-          router.push("/mapa");
+          router.push("/map");
         }
       })
       .catch((error: unknown) => {
         console.log(error);
-        alert("Erro ao cadastrar denúncia");
+        alert("Error while submitting report");
       });
   };
 
@@ -98,31 +108,31 @@ export default function Forms() {
         <form className="flex justify-center items-center pt-36 pb-36" onSubmit={handleSubmit}>
           <div className="form-register grid grid-cols-2 gap-3 p-6 shadow-lg bg-slate-50 rounded-md">
             <h1 className="text-3xl block text-center font-semibold col-span-2">
-              Formulário de Denúncia
+              Issue Report Form
             </h1>
             <hr className="mt-3 col-span-2" />
             <div className="mt-3 col-span-2">
               <label htmlFor="title" className="block text-base mb-2">
-                Título
+                Title
               </label>
               <input
                 type="text"
                 id="title"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Tema da denúncia..."
+                placeholder="Report title..."
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
             <div className="mt-3 col-span-2">
               <label htmlFor="content" className="block text-base mb-2">
-                Descrição
+                Description
               </label>
               <input
                 type="text"
                 id="content"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Descreva a denúncia..."
+                placeholder="Describe the issue..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
@@ -130,20 +140,20 @@ export default function Forms() {
             <div className="mt-3 col-span-2 grid grid-cols-12 gap-3">
               <div className="col-span-8">
                 <label htmlFor="cpf" className="block text-base mb-2">
-                  Endereço
+                  Address
                 </label>
                 <input
                   type="text"
                   id="cpf"
                   className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                  placeholder="Digite o endereço..."
+                  placeholder="Enter the address..."
                   value={street}
                   onChange={(e) => setStreet(e.target.value)}
                 />
               </div>
               <div className="col-span-4">
                 <label htmlFor="category" className="block text-base mb-2">
-                  Categoria
+                  Category
                 </label>
                 <select
                   id="category"
@@ -151,10 +161,10 @@ export default function Forms() {
                   value={idCat}
                   onChange={(e) => setIdCat(e.target.value)}
                 >
-                  <option value="">Selecione a categoria</option>
+                  <option value="">Select a category</option>
                   {categories.map((category) => (
-                    <option key={category.id_categoria} value={category.id_categoria}>
-                      {category.nome_categoria}
+                    <option key={category.id} value={category.id}>
+                      {category.name}
                     </option>
                   ))}
                 </select>
@@ -163,33 +173,33 @@ export default function Forms() {
 
             <div className="mt-3">
               <label htmlFor="cpf" className="block text-base mb-2">
-                Cidade
+                City
               </label>
               <input
                 type="text"
                 id="cpf"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Digite a cidade..."
+                placeholder="Enter the city..."
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               />
             </div>
             <div className="mt-3">
               <label htmlFor="cpf" className="block text-base mb-2">
-                Bairro
+                District
               </label>
               <input
                 type="text"
                 id="cpf"
                 className="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
-                placeholder="Digite o bairro..."
+                placeholder="Enter the district..."
                 value={district}
                 onChange={(e) => setDistrict(e.target.value)}
               />
             </div>
             <div className="mt-3 flex justify-between items-center col-span-2">
               <div className="block text-base mb-2">
-                <p>Selecione a localização da denúncia ao lado</p>
+                <p>Select the issue location on the map</p>
               </div>
             </div>
             <div className="mt-5 col-span-2">
@@ -197,7 +207,7 @@ export default function Forms() {
                 type="submit"
                 className="border-2 border-gray-900 bg-gray-900 text-white py-1 w-full rounded-md hover:bg-transparent hover:text-gray-900 font-semibold"
               >
-                Enviar
+                Submit
               </button>
             </div>
           </div>

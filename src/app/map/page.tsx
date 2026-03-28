@@ -11,7 +11,7 @@ const DynamicMap = dynamic(() => import("../components/map"), {
   ssr: false,
 });
 
-export default function Mapa() {
+export default function MapPage() {
   return (
     <>
       <Header />
