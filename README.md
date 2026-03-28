@@ -20,8 +20,8 @@ Itareport allows users to browse and create reports (denuncias) pinned to an int
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org/) 13 (App Router)
-- [React](https://react.dev/) 18
+- [Vinext](https://github.com/cloudflare/vinext) (Vite + Next-compatible App Router)
+- [React](https://react.dev/) 19
 - [Tailwind CSS](https://tailwindcss.com/)
 - [React Leaflet](https://react-leaflet.js.org/) for map rendering
 - [Axios](https://axios-http.com/) for HTTP requests
@@ -29,8 +29,7 @@ Itareport allows users to browse and create reports (denuncias) pinned to an int
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) >= 16
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Bun](https://bun.sh/) >= 1.3
 - A running instance of the [itareport-api](../itareport-api) backend
 
 ## Getting Started
@@ -45,13 +44,13 @@ Itareport allows users to browse and create reports (denuncias) pinned to an int
 2. **Install dependencies**
 
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Run the development server**
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
    The app will be available at [http://localhost:3000](http://localhost:3000).
@@ -59,14 +58,14 @@ Itareport allows users to browse and create reports (denuncias) pinned to an int
 4. **Build for production**
 
    ```bash
-   npm run build
+   bun run build
    ```
 
 ## Project Structure
 
 ```
 src/
-  app/          # Next.js App Router pages and layouts
+   app/          # Vinext App Router pages and layouts
 public/         # Static assets
 docs/           # Project documentation
 ```
