@@ -4,5 +4,5 @@
     "correctness": "error",
     "suspicious": "error"
   },
-  "ignorePatterns": ["node_modules/**", "dist/**", ".next/**"]
+  "ignorePatterns": ["node_modules/**", "apps/frontend/dist/**", "apps/frontend/.next/**"]
 }

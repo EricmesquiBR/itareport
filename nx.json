@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  },
+  "targetDefaults": {
+    "build": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "lint-fix": {
+      "cache": true
+    },
+    "format": {
+      "cache": true
+    },
+    "format-fix": {
+      "cache": true
+    }
+  },
+  "analytics": false
+}

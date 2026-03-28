@@ -1,0 +1,52 @@
+{
+  "name": "frontend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/frontend/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "serve"
+      }
+    },
+    "build": {
+      "executor": "nx:run-script",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "script": "build"
+      }
+    },
+    "start": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "start"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "lint"
+      }
+    },
+    "lint-fix": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "lint:fix"
+      }
+    },
+    "format": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "format"
+      }
+    },
+    "format-fix": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "format:fix"
+      }
+    }
+  },
+  "tags": ["type:app", "scope:frontend"]
+}

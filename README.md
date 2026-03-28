@@ -20,6 +20,7 @@ Itareport allows users to browse and create issue reports pinned to an interacti
 
 ## Tech Stack
 
+- [Nx](https://nx.dev/) workspace orchestration and task running
 - [Vinext](https://github.com/cloudflare/vinext) (Vite + Next-compatible App Router)
 - [React](https://react.dev/) 19
 - [Tailwind CSS](https://tailwindcss.com/)
@@ -53,7 +54,7 @@ Itareport allows users to browse and create issue reports pinned to an interacti
    bun run dev
    ```
 
-   The app will be available at [http://localhost:3000](http://localhost:3000).
+   This runs `nx serve frontend`. The app will be available at [http://localhost:3000](http://localhost:3000).
 
 4. **Build for production**
 
@@ -61,22 +62,25 @@ Itareport allows users to browse and create issue reports pinned to an interacti
    bun run build
    ```
 
+   This runs `nx build frontend`.
+
 5. **Lint and format with Oxc (Oxlint + Oxfmt)**
 
    ```bash
-   bun run lint:ox
-   bun run lint:ox:fix
-   bun run format:ox
-   bun run format:ox:fix
+   bun run lint
+   bun run lint:fix
+   bun run format
+   bun run format:fix
    ```
 
 ## Project Structure
 
 ```
-src/
-   app/          # Vinext App Router pages and layouts
-public/         # Static assets
-docs/           # Project documentation
+apps/
+   frontend/
+      src/       # Vinext App Router pages and layouts
+      public/    # Static assets
+docs/            # Project documentation
 ```
 
 ## Related
