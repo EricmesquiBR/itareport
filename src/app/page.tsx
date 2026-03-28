@@ -6,6 +6,7 @@ import Header from "./components/header"
 import Footer from "./components/footer"
 import cta from "../../public/img/CTA-BG.jpg"
 import { useGlobalContext } from "./context/store"
+import { Button } from "@/components/ui/button"
 
 export default function LandingPage() {
     const { userId, setUserId } = useGlobalContext()
@@ -31,12 +32,12 @@ export default function LandingPage() {
                     <div className='CTA'>
                         <div className='BG-CTA-Bottom card-img-top border-solid flex justify-center items-center'>
                             <Image src={cta} className='cta-img' alt='...' />
-                            <a
-                                href='/mapa/'
-                                className='cta-bottom rounded border-black border-2 bg-gray-500 text-gray-200 p-4 absolute'
+                            <Button
+                                asChild
+                                className='cta-bottom absolute rounded border-2 border-black bg-gray-500 text-gray-200 hover:bg-gray-600'
                             >
-                                Ver Mapa de Denúncias
-                            </a>
+                                <a href='/mapa/'>Ver Mapa de Denúncias</a>
+                            </Button>
                         </div>
                     </div>
                 </div>
