@@ -1,0 +1,86 @@
+{
+  "name": "api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-script",
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "script": "build"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "dev"
+      }
+    },
+    "start": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "start"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxlint -c ../../.oxlintrc.json .",
+        "cwd": "apps/api"
+      }
+    },
+    "lint-fix": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxlint -c ../../.oxlintrc.json --fix .",
+        "cwd": "apps/api"
+      }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxfmt -c ../../.oxfmtrc.json --ignore-path ../../.oxfmtignore --check .",
+        "cwd": "apps/api"
+      }
+    },
+    "format-fix": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxfmt -c ../../.oxfmtrc.json --ignore-path ../../.oxfmtignore --write .",
+        "cwd": "apps/api"
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "type-check"
+      }
+    },
+    "db:generate": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "db:generate"
+      }
+    },
+    "db:migrate": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "db:migrate"
+      }
+    },
+    "db:push": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "db:push"
+      }
+    },
+    "db:studio": {
+      "executor": "nx:run-script",
+      "options": {
+        "script": "db:studio"
+      }
+    }
+  },
+  "tags": ["type:app", "scope:api"]
+}

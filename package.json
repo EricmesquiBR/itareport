@@ -1,26 +1,33 @@
 {
   "name": "itareport",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "nx": "nx",
-    "dev": "nx serve frontend",
-    "build": "nx build frontend",
-    "start": "nx start frontend",
-    "lint": "nx lint frontend",
-    "lint:ox": "nx lint frontend",
-    "lint:fix": "nx run frontend:lint-fix",
-    "lint:ox:fix": "nx run frontend:lint-fix",
-    "format": "nx run frontend:format",
-    "format:ox": "nx run frontend:format",
-    "format:fix": "nx run frontend:format-fix",
-    "format:ox:fix": "nx run frontend:format-fix",
+    "dev": "nx run-many -t serve",
+    "build": "nx run-many -t build",
+    "start": "nx run-many -t start",
+    "lint": "nx run-many -t lint",
+    "lint:ox": "nx run-many -t lint",
+    "lint:fix": "nx run-many -t lint-fix",
+    "format": "nx run-many -t format",
+    "format:ox": "nx run-many -t format",
+    "format:fix": "nx run-many -t format-fix",
+    "format:ox:fix": "nx run-many -t format-fix",
     "graph": "nx graph",
     "show:projects": "nx show projects"
   },
   "devDependencies": {
+    "@nx/cypress": "22.6.3",
+    "@nx/vite": "22.6.3",
+    "@nx/web": "22.6.3",
+    "@types/node": "^22.19.15",
+    "cypress": "^15.8.0",
     "nx": "22.6.3",
-    "@nx/vite": "22.6.3"
+    "oxfmt": "^0.42.0",
+    "oxlint": "^1.57.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.0"
   },
   "workspaces": [
     "apps/*",
@@ -29,5 +36,6 @@
   "packageManager": "bun@1.3.8",
   "nx": {
     "includedScripts": []
-  }
+  },
+  "dependencies": {}
 }

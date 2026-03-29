@@ -6,7 +6,9 @@
   },
   "targetDefaults": {
     "build": {
-      "cache": true
+      "dependsOn": [
+        "^build"
+      ]
     },
     "lint": {
       "cache": true
@@ -19,7 +21,23 @@
     },
     "format-fix": {
       "cache": true
+    },
+    "dev": {
+      "dependsOn": [
+        "^dev"
+      ]
     }
   },
-  "analytics": false
+  "analytics": false,
+  "plugins": [
+    {
+      "plugin": "@nx/cypress/plugin",
+      "options": {
+        "targetName": "e2e",
+        "openTargetName": "open-cypress",
+        "componentTestingTargetName": "component-test",
+        "ciTargetName": "e2e-ci"
+      }
+    }
+  ]
 }

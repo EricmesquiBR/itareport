@@ -73,6 +73,38 @@ Itareport allows users to browse and create issue reports pinned to an interacti
    bun run format:fix
    ```
 
+6. **Run Cypress E2E tests**
+
+   Start the frontend app first:
+
+   ```bash
+   bun run nx run frontend:serve -- --port 4200
+   ```
+
+   In another terminal, run the headless E2E suite:
+
+   ```bash
+   bun run nx run frontend-e2e:e2e-ci
+   ```
+
+   Run the default E2E target:
+
+   ```bash
+   bun run nx run frontend-e2e:e2e
+   ```
+
+   Open Cypress UI mode (interactive):
+
+   ```bash
+   bun run nx run frontend-e2e:open-cypress
+   ```
+
+   Run a single spec file:
+
+   ```bash
+   bun run nx run frontend-e2e:e2e-ci --spec=cypress/e2e/app.cy.ts
+   ```
+
 ## Project Structure
 
 ```

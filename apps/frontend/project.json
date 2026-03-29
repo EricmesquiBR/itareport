@@ -10,9 +10,32 @@
         "script": "serve"
       }
     },
+    "serve-e2e": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "bun run serve -- --port 4200"
+          }
+        ],
+        "parallel": true,
+        "usePty": false,
+        "cwd": "apps/frontend",
+        "readyWhen": "Local:"
+      },
+      "continuous": true
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "frontend:build"
+      }
+    },
     "build": {
       "executor": "nx:run-script",
-      "outputs": ["{projectRoot}/dist"],
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
       "options": {
         "script": "build"
       }
@@ -24,29 +47,36 @@
       }
     },
     "lint": {
-      "executor": "nx:run-script",
+      "executor": "nx:run-commands",
       "options": {
-        "script": "lint"
+        "command": "oxlint -c ../../.oxlintrc.json --disable-unicorn-plugin .",
+        "cwd": "apps/frontend"
       }
     },
     "lint-fix": {
-      "executor": "nx:run-script",
+      "executor": "nx:run-commands",
       "options": {
-        "script": "lint:fix"
+        "command": "oxlint -c ../../.oxlintrc.json --disable-unicorn-plugin --fix .",
+        "cwd": "apps/frontend"
       }
     },
     "format": {
-      "executor": "nx:run-script",
+      "executor": "nx:run-commands",
       "options": {
-        "script": "format"
+        "command": "oxfmt -c ../../.oxfmtrc.json --ignore-path ../../.oxfmtignore --check .",
+        "cwd": "apps/frontend"
       }
     },
     "format-fix": {
-      "executor": "nx:run-script",
+      "executor": "nx:run-commands",
       "options": {
-        "script": "format:fix"
+        "command": "oxfmt -c ../../.oxfmtrc.json --ignore-path ../../.oxfmtignore --write .",
+        "cwd": "apps/frontend"
       }
     }
   },
-  "tags": ["type:app", "scope:frontend"]
+  "tags": [
+    "type:app",
+    "scope:frontend"
+  ]
 }

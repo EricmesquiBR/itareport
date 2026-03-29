@@ -6,11 +6,7 @@
   "scripts": {
     "serve": "vinext dev",
     "build": "vinext build",
-    "start": "vinext start",
-    "lint": "oxlint -c ../../.oxlintrc.json --disable-unicorn-plugin .",
-    "lint:fix": "oxlint -c ../../.oxlintrc.json --disable-unicorn-plugin --fix .",
-    "format": "oxfmt -c ../../.oxfmtrc.json --ignore-path ../../.oxfmtignore --check .",
-    "format:fix": "oxfmt -c ../../.oxfmtrc.json --ignore-path ../../.oxfmtignore --write ."
+    "start": "vinext start"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",

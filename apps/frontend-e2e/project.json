@@ -1,0 +1,46 @@
+{
+  "name": "frontend-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/frontend-e2e",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/frontend-e2e/cypress.config.ts",
+        "skipServe": true,
+        "baseUrl": "http://localhost:4200",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "ci": {}
+      }
+    },
+    "e2e-ci": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/frontend-e2e/cypress.config.ts",
+        "skipServe": true,
+        "baseUrl": "http://localhost:4200",
+        "testingType": "e2e",
+        "watch": false,
+        "browser": "electron"
+      }
+    },
+    "open-cypress": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/frontend-e2e/cypress.config.ts",
+        "skipServe": true,
+        "baseUrl": "http://localhost:4200",
+        "watch": true,
+        "headless": false,
+        "testingType": "e2e"
+      }
+    }
+  },
+  "tags": [
+    "type:e2e",
+    "scope:frontend"
+  ]
+}
