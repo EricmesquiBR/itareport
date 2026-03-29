@@ -33,7 +33,7 @@ export default function Map() {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    axios.get<{ data: CategoryApi[] }>(`${API_URL}/category`).then((response) => {
+    axios.get<{ data: CategoryApi[] }>(`${API_URL}/categories`).then((response) => {
       setCategories(
         response.data.data.map((category) => ({
           id: category.id_categoria,
@@ -54,7 +54,7 @@ export default function Map() {
         });
     } else {
       axios
-        .get(`${API_URL}/category/${idCat}`)
+        .get(`${API_URL}/categories/${idCat}/reports`)
         .then((response) => {
           setMarkersData(response.data.data);
         })

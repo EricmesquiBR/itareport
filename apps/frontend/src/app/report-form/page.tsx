@@ -39,7 +39,7 @@ export default function Forms() {
   const router = useRouter();
 
   useEffect(() => {
-    axios.get<{ data: CategoryApi[] }>(`${API_URL}/category`).then((response) => {
+    axios.get<{ data: CategoryApi[] }>(`${API_URL}/categories`).then((response) => {
       setCategories(
         response.data.data.map((category) => ({
           id: category.id_categoria,
@@ -74,7 +74,7 @@ export default function Forms() {
     }
 
     axios
-      .post(`${API_URL}/report`, {
+      .post(`${API_URL}/reports`, {
         title,
         content,
         id: userId,

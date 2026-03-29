@@ -47,7 +47,7 @@ export default function Register() {
     const hashedPassword = hashPassword(password);
 
     axios
-      .post(`${API_URL}/user`, {
+      .post(`${API_URL}/users`, {
         name,
         cpf,
         email,

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const envShape = z.object({
-  NEXT_PUBLIC_API_URL: z.string().url().default("http://localhost:3030"),
+  NEXT_PUBLIC_API_URL: z.string().url().default("http://localhost:3030/v1"),
 });
 
 const safeEnv = envShape.safeParse({

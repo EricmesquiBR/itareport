@@ -27,7 +27,7 @@ export default function Login() {
     const hashedPassword = hashPassword(password);
 
     axios
-      .post(`${API_URL}/user/login`, {
+      .post(`${API_URL}/users/login`, {
         email,
         password: hashedPassword,
       })

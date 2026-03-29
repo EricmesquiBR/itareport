@@ -13,6 +13,7 @@ import { logger } from "./lib/logger.js";
 import { env } from "./env.js";
 
 const app = new Hono();
+const corsOrigins = env.CORS_ORIGIN === "*" ? "*" : env.CORS_ORIGIN.split(",").map((o) => o.trim());
 
 /**
  * Structured logging with Pino.
@@ -46,7 +47,7 @@ app.use("*", prettyJSON());
 app.use(
   "*",
   cors({
-    origin: env.CORS_ORIGIN === "*" ? "*" : env.CORS_ORIGIN.split(",").map((o) => o.trim()),
+    origin: corsOrigins,
     credentials: true,
     maxAge: 604800, // 7 days
     allowHeaders: ["Content-Type", "Authorization"],
@@ -72,7 +73,9 @@ app.use(
 /**
  * CSRF Protection Middleware prevents CSRF attacks.
  */
-app.use("*", csrf());
+if (corsOrigins !== "*") {
+  app.use("*", csrf({ origin: corsOrigins }));
+}
 
 // API v1
 const v1 = new Hono();

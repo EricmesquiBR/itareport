@@ -54,7 +54,13 @@ Itareport allows users to browse and create issue reports pinned to an interacti
    bun run dev
    ```
 
-   This runs `nx serve frontend`. The app will be available at [http://localhost:3000](http://localhost:3000).
+   This starts PostgreSQL/Redis via Docker Compose and then runs API + frontend serve targets. The frontend is available at [http://localhost:3000](http://localhost:3000).
+
+   If you want to start only Nx app servers (without Compose):
+
+   ```bash
+   bun run dev:services
+   ```
 
 4. **Build for production**
 
