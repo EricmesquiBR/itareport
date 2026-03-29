@@ -12,4 +12,7 @@ else
 fi
 
 cd "$ROOT_DIR"
+echo "Running API database migrations..."
+bun run nx run api:db:migrate
+
 exec bun run nx run-many -t serve "$@"

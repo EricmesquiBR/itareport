@@ -54,7 +54,7 @@ Itareport allows users to browse and create issue reports pinned to an interacti
    bun run dev
    ```
 
-   This starts PostgreSQL/Redis via Docker Compose and then runs API + frontend serve targets. The frontend is available at [http://localhost:3000](http://localhost:3000).
+   This starts PostgreSQL/Redis via Docker Compose, runs API database migrations, and then starts API + frontend serve targets. The frontend is available at [http://localhost:3000](http://localhost:3000).
 
    If you want to start only Nx app servers (without Compose):
 
