@@ -19,7 +19,6 @@
           }
         ],
         "parallel": true,
-        "usePty": false,
         "cwd": "apps/frontend",
         "readyWhen": "Local:"
       },

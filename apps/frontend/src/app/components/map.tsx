@@ -5,8 +5,9 @@ import L from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { env } from "@/env";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030";
+const API_URL = env.NEXT_PUBLIC_API_URL;
 
 type CategoryApi = {
   id_categoria: number;
@@ -37,7 +38,7 @@ export default function Map() {
         response.data.data.map((category) => ({
           id: category.id_categoria,
           name: category.nome_categoria,
-        }))
+        })),
       );
     });
   }, []);

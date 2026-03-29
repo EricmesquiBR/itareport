@@ -75,6 +75,14 @@ Itareport allows users to browse and create issue reports pinned to an interacti
 
 6. **Run Cypress E2E tests**
 
+   One command (recommended):
+
+   ```bash
+   bun run tests
+   ```
+
+   This command starts the frontend server if needed, runs the Cypress suite, and then stops the temporary server.
+
    Start the frontend app first:
 
    ```bash

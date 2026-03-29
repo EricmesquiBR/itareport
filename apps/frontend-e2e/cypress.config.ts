@@ -10,5 +10,7 @@ export default defineConfig({
       cypressDir: "cypress",
       bundler: "vite",
     }),
+    videosFolder: "dist/cypress/videos",
+    screenshotsFolder: "dist/cypress/screenshots",
   },
 });

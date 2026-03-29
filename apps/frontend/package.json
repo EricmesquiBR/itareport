@@ -19,7 +19,8 @@
     "react-dom": "^19.2.0",
     "react-leaflet": "^5.0.0",
     "tailwind-merge": "^3.3.1",
-    "vinext": "^0.0.36"
+    "vinext": "^0.0.36",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.17",

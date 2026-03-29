@@ -8,13 +8,14 @@ import Footer from "../components/footer";
 import Loading from "../components/loading";
 import { useGlobalContext } from "../context/store";
 import axios from "axios";
+import { env } from "@/env";
 
 const ReportFormMap = dynamic(() => import("../components/reportFormMap"), {
   loading: () => <Loading />,
   ssr: false,
 });
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030";
+const API_URL = env.NEXT_PUBLIC_API_URL;
 
 type CategoryApi = {
   id_categoria: number;
@@ -43,7 +44,7 @@ export default function Forms() {
         response.data.data.map((category) => ({
           id: category.id_categoria,
           name: category.nome_categoria,
-        }))
+        })),
       );
     });
   }, []);

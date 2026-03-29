@@ -42,13 +42,13 @@ REST API backend for [Itareport](../itareport) — a community-driven platform f
 
 3. **Configure environment variables**
 
-   Copy the example file and fill in your database credentials:
+   From the workspace root, copy the example file and fill in your database credentials:
 
    ```bash
-   cp .env.example .env
+   cp ../../.env.example ../../.env
    ```
 
-   Edit `.env`:
+   Edit `../../.env`:
 
    ```env
    HOST=0.0.0.0

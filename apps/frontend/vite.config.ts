@@ -5,6 +5,7 @@ import vinext from "vinext";
 
 export default defineConfig({
   plugins: [vinext(), tailwindcss()],
+  envDir: path.resolve(__dirname, "../.."),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

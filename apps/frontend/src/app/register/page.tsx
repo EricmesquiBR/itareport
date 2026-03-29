@@ -6,8 +6,9 @@ import { SHA256 } from "crypto-js";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import axios from "axios";
+import { env } from "@/env";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3030";
+const API_URL = env.NEXT_PUBLIC_API_URL;
 
 export default function Register() {
   const [name, setName] = useState("");
